@@ -9,9 +9,16 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "doc")
     private String doc;
+
+    public User() {
+    }
 
     public User(int id, String name, String doc) {
         this.id = id;
@@ -19,11 +26,11 @@ public class User {
         this.doc = doc;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

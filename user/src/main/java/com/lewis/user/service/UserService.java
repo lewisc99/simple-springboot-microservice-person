@@ -17,9 +17,24 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> get()
+    public List<User> getAll()
     {
         List<User> user =  userRepository.findAll();
         return user;
+    }
+
+    public Optional<User> getById(Integer id)
+    {
+        try
+        {
+            Optional<User> user = userRepository.findById(id);
+            return user;
+        }
+        catch (Exception e )
+        {
+            throw new RuntimeException();
+        }
+
+
     }
 }
