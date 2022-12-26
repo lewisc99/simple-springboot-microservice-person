@@ -13,6 +13,12 @@ public class User {
     private String name;
     private String doc;
 
+    public User(int id, String name, String doc) {
+        this.id = id;
+        this.name = name;
+        this.doc = doc;
+    }
+
     public int getId() {
         return id;
     }
