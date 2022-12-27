@@ -41,7 +41,7 @@ public class UserController {
 
         if (user.isEmpty())
         {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(404).build();
         }
 
         return ResponseEntity.ok(user.get());
