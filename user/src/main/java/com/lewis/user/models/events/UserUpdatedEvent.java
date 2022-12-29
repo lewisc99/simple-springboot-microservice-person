@@ -7,11 +7,13 @@ import java.time.OffsetDateTime;
 
 public class UserUpdatedEvent {
 
-
-
     private  String name;
     @JsonIgnore
     private OffsetDateTime date = OffsetDateTime.now();
+
+    public UserUpdatedEvent(String name) {
+        this.name = name;
+    }
 
     public String getName() {
         return name;
