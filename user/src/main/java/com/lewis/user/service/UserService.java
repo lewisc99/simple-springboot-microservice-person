@@ -2,6 +2,7 @@ package com.lewis.user.service;
 
 
 import com.lewis.user.models.User;
+import com.lewis.user.models.dto.UserUpdateDto;
 import com.lewis.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,21 @@ public class UserService {
         {
             throw new RuntimeException();
         }
-
-
     }
+
+    public void Update(User user, UserUpdateDto updateDto)
+    {
+        try
+        {
+            user.setName(updateDto.getName());
+            userRepository.save(user);
+
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
+
 }

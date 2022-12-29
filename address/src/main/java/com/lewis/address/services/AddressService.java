@@ -21,7 +21,7 @@ public class AddressService {
     private AddressRepository repository;
 
 
-    public AddressDto getAdress(Integer userId)  {
+    public AddressDto getAddress(Integer userId)  {
         User user = userFeign.findById(userId).getBody();
 
         Optional<Address> address =  repository.findByUserId(userId);

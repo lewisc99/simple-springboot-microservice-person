@@ -2,14 +2,12 @@ package com.lewis.user.controller;
 
 
 import com.lewis.user.models.User;
+import com.lewis.user.models.dto.UserUpdateDto;
 import com.lewis.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -45,5 +43,28 @@ public class UserController {
         }
 
         return ResponseEntity.ok(user.get());
+    }
+
+
+    @PutMapping("{id}")
+    public ResponseEntity<UserUpdateDto> update(@PathVariable Integer id, @RequestBody UserUpdateDto updateDto)
+    {
+
+        Optional<User> user = userService.getById(id);
+
+        if (user.isEmpty())
+        {
+            return ResponseEntity.notFound().build();
+        }
+
+        userService.Update(user.get(), updateDto );
+
+        updateDto.setId(user.get().getId());
+        updateDto.setDoc(user.get().getDoc());
+
+
+       return ResponseEntity.status(200).body(updateDto);
+
+
     }
 }
