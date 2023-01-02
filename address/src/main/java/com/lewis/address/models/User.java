@@ -1,15 +1,31 @@
 package com.lewis.address.models;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
-public class User  implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+@Entity
+@Table(name = "tb_user")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "doc")
     private String doc;
+
+    public User() {
+    }
+
+    public User(int id, String name, String doc) {
+        this.id = id;
+        this.name = name;
+        this.doc = doc;
+    }
 
     public Integer getId() {
         return id;
