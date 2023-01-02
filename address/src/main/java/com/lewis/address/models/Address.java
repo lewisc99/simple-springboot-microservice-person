@@ -16,8 +16,8 @@ public class Address {
     private String city;
     @Column(name="country")
     private String country;
-    @Column(name="user_id")
-    private Integer userId;
+    @ManyToOne(fetch =FetchType.LAZY)
+    private User user;
 
     public Long getId() {
         return id;
@@ -43,11 +43,11 @@ public class Address {
         this.country = country;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 }
