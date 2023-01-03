@@ -16,8 +16,8 @@ public class AddressController {
     @Autowired
     private AddressService addressService;
 
-    @GetMapping("/{userId}")
-    public ResponseEntity<AddressDto> getAddress(@PathVariable Integer userId)
+    @GetMapping("feign/{userId}")
+    public ResponseEntity<AddressDto> getAddressFeign(@PathVariable Integer userId)
     {
 
        AddressDto addressDto =  addressService.getAddress(userId);
@@ -29,6 +29,9 @@ public class AddressController {
        return ResponseEntity.ok(addressDto);
     }
 
+
+
+    @GetMapping("/{userId}")
     public ResponseEntity<AddressDto> getAddressByUserId(@PathVariable Integer userId)
     {
         Optional<Address> address = addressService.getAddressByUserId(userId);

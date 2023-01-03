@@ -7,12 +7,26 @@ import java.time.OffsetDateTime;
 
 public class UserUpdatedEvent {
 
+
+    private Integer id;
     private  String name;
     @JsonIgnore
     private OffsetDateTime date = OffsetDateTime.now();
 
-    public UserUpdatedEvent(String name) {
+
+    public UserUpdatedEvent() {
+    }
+    public UserUpdatedEvent(Integer id, String name) {
+        this.id = id;
         this.name = name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

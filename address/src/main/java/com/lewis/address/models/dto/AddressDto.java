@@ -19,6 +19,7 @@ public class AddressDto {
        this.id = address.getId();
        this.city = address.getCity();
        this.country = address.getCountry();
+       this.userId = address.getUserId();
         this.username = name;
     }
 

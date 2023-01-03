@@ -47,6 +47,19 @@ public class AddressService {
         }
 
         return address;
-
     }
+
+    public void updateAddressUsername(Address address)
+    {
+        try {
+            repository.save(address);
+
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+
 }

@@ -72,7 +72,7 @@ public class UserController {
         updateDto.setId(user.get().getId());
         updateDto.setDoc(user.get().getDoc());
 
-        UserUpdatedEvent userUpdatedEvent = new UserUpdatedEvent(updateDto.getName());
+        UserUpdatedEvent userUpdatedEvent = new UserUpdatedEvent(id,updateDto.getName());
         rabbitTemplate.convertAndSend(rabbitmqConstraints.USER_EXCHANGE_NAME,rabbitmqConstraints.USER_ROUTING_KEY,userUpdatedEvent);
 
        return ResponseEntity.status(200).body(updateDto);
