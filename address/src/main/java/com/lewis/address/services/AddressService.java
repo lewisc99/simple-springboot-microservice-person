@@ -3,8 +3,8 @@ package com.lewis.address.services;
 
 import com.lewis.address.feignClients.UserFeignClients;
 import com.lewis.address.models.Address;
-import com.lewis.address.models.dto.AddressDto;
 import com.lewis.address.models.User;
+import com.lewis.address.models.dto.AddressDto;
 import com.lewis.address.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +34,19 @@ public class AddressService {
         AddressDto addressDto = new AddressDto(address.get(), user.getName());
 
         return addressDto;
+
+    }
+
+    public Optional<Address> getAddressByUserId(Integer userId)  {
+
+        Optional<Address> address =  repository.findByUserId(userId);
+
+        if (address.isEmpty())
+        {
+            return null;
+        }
+
+        return address;
 
     }
 }

@@ -11,6 +11,8 @@ public class AddressDto {
 
     private String country;
 
+
+    private Integer userId;
     private String username;
 
     public AddressDto(Address address, String name) {
@@ -42,6 +44,15 @@ public class AddressDto {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getUsername() {
